@@ -9,7 +9,7 @@
 		]]>
 		<include refid="table_column_list"/>
 		<![CDATA[
-			FROM pay_admin AS k 
+			FROM admin AS k 
 			WHERE 1 = 1
 		]]>
 		<include refid="filter_sql"/>
@@ -22,7 +22,7 @@
     	]]>
     	<include refid="table_column_list"/>
     	<![CDATA[
-    		FROM pay_admin AS k 
+    		FROM admin AS k 
     		WHERE k.id = #{entityPK}
     	]]>
     </select>
@@ -30,7 +30,7 @@
     <select id="getUserPermissionDao" parameterType="java.lang.Integer" resultType="java.util.Map">
     	<![CDATA[
     		SELECT GROUP_CONCAT(permission_id) as permissionIds 
-    		FROM pay_admin_permission 
+    		FROM admin_permission 
     		WHERE admin_id = #{userId} 
     	]]>
     </select>
@@ -41,7 +41,7 @@
     	]]>
     	<include refid="table_column_list"/>
     	<![CDATA[
-    		FROM pay_admin AS k 
+    		FROM admin AS k 
     		WHERE k.nickname = #{userName}
     	]]>   	
     </select>
@@ -49,14 +49,14 @@
     <select id="queryUserBigQnDao" parameterType="java.lang.Integer" resultType="java.util.Map">
     	<![CDATA[
     		SELECT GROUP_CONCAT(bigqn_id) as bigqnId 
-    		FROM pay_admin_qn  
+    		FROM admin_qn  
     		WHERE admin_id = #{userId} 
     	]]>
     </select>
     
     <insert id="save" parameterType="memberUser" keyProperty="id">
     	<![CDATA[
-    		INSERT INTO pay_admin(
+    		INSERT INTO admin(
     			`name`,
     			`nickname`,
     			`password`,
@@ -78,7 +78,7 @@
     
     <insert id="addUserPermissionDao">
     	<![CDATA[
-    		INSERT INTO pay_admin_permission(
+    		INSERT INTO admin_permission(
     			`admin_id`,
     			`permission_id`
     		) VALUES (
@@ -90,7 +90,7 @@
     
     <insert id="addUserQnDao">
     	<![CDATA[
-    		INSERT INTO pay_admin_qn(
+    		INSERT INTO admin_qn(
     			`admin_id`,
     			`bigqn_id`
     		) VALUES (
@@ -102,7 +102,7 @@
     
     <update id="update" parameterType="memberUser">
     	<![CDATA[
-    		UPDATE pay_admin 
+    		UPDATE admin 
     		SET `name` = #{userName},
     			`nickname` = #{nickname},
     			`status` = #{status},
@@ -122,7 +122,7 @@
     
 	<update id="updateUserStatusDao">
 		<![CDATA[
-			UPDATE pay_admin 
+			UPDATE admin 
 			SET `status` = #{status}
 			WHERE id = #{userId}
 		]]>
@@ -130,14 +130,14 @@
 	
 	<delete id="deleteUserPermissionDao" parameterType="java.lang.Integer">
 		<![CDATA[
-			DELETE FROM pay_admin_permission 
+			DELETE FROM admin_permission 
 			WHERE admin_id = #{userId}
 		]]>
 	</delete>
 	
 	<delete id="deleteUserQnDao" parameterType="java.lang.Integer">
 		<![CDATA[
-			DELETE FROM pay_admin_qn 
+			DELETE FROM admin_qn 
 			WHERE admin_id = #{userId}
 		]]>
 	</delete>

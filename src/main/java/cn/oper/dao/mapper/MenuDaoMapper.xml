@@ -6,7 +6,7 @@
     <select id="queryFirstMenuDao" parameterType="searchDTO" resultType="menuDTO">
 		<![CDATA[
 			SELECT id as id, name as name
-			FROM pay_menu_1  
+			FROM menu_1  
 			WHERE 1 = 1 
 		]]>
 		<include refid="filter_sql"/>
@@ -16,7 +16,7 @@
     <select id="querySecondMenuDao" parameterType="searchDTO" resultType="menuDTO">
 		<![CDATA[
 			SELECT id as id, name as name, parentId as parentId, defalutUrl as url, rel 
-			FROM pay_menu_2  
+			FROM menu_2  
 			WHERE 1 = 1 
 		]]>
 		<include refid="filter_sql"/>
@@ -26,7 +26,7 @@
     <select id="queryThreeMenuDao" parameterType="searchDTO" resultType="menuDTO">
 		<![CDATA[
 			SELECT id as id, name as name, parentId as parentId, url as url 
-			FROM pay_menu_3  
+			FROM menu_3  
 			WHERE 1 = 1 
 		]]>
 		<include refid="filter_sql"/>
@@ -35,14 +35,14 @@
     <select id="queryThreeMenuByUserIdDao" parameterType="searchDTO" resultType="menuDTO">
 		<![CDATA[
 			SELECT wm.id as id, wm.`name` as `name`, wm.parentId as parentId, wm.url as url, wa.admin_id as userId 
-			FROM pay_menu_3 as wm LEFT JOIN pay_admin_permission wa ON wm.id = wa.permission_id AND wa.admin_id = #{userId}
+			FROM menu_3 as wm LEFT JOIN admin_permission wa ON wm.id = wa.permission_id AND wa.admin_id = #{userId}
 		]]>
     </select>  
     
     <select id="queryThreeMenuByRoleIdDao" parameterType="searchDTO" resultType="menuDTO">
 		<![CDATA[
 			SELECT wm.id as id, wm.`name` as `name`, wm.parentId as parentId, wm.url as url, wr.role_id as roleId 
-			FROM pay_menu_3 as wm LEFT JOIN pay_role_permission wr ON wm.id = wr.permission_id AND wr.role_id = #{roleId}
+			FROM menu_3 as wm LEFT JOIN role_permission wr ON wm.id = wr.permission_id AND wr.role_id = #{roleId}
 		]]>
     </select>  
     
@@ -50,17 +50,17 @@
 		<choose>
 			<when test="level == 1 or level == '1' ">
 				SELECT id as id, name as name, sort as sort, status as status 
-				FROM pay_menu_1 
+				FROM menu_1 
 				WHERE id = #{id}
 			</when>
 			<when test="level == 2 or level == '2' ">
 				SELECT id as id, name as name, parentId as parentId, sort as sort, defalutUrl as url, rel, status as status 
-				FROM pay_menu_2 
+				FROM menu_2 
 				WHERE id = #{id}
 			</when>
 			<when test="level == 3 or level == '3' ">
 				SELECT id as id, name as name, parentId as parentId, url as url, status as status 
-				FROM pay_menu_3 
+				FROM menu_3 
 				WHERE id = #{id}
 			</when>
 			<otherwise>
@@ -72,15 +72,15 @@
     <select id="queryThreeMenuByUserDao" parameterType="java.lang.Integer" resultType="menuDTO">
     	<![CDATA[
     		SELECT id, name, parentId, url  
-    		FROM pay_menu_3 
-    		WHERE id in (select DISTINCT permission_id from pay_admin_permission WHERE admin_id = #{userId}) AND status = 1 
+    		FROM menu_3 
+    		WHERE id in (select DISTINCT permission_id from admin_permission WHERE admin_id = #{userId}) AND status = 1 
     	]]>
     </select>
     
     <select id="querySecondMenuByUserDao" parameterType="java.lang.String" resultType="menuDTO">
     	<![CDATA[
     		SELECT id, name, parentId, defalutUrl as url, rel 
-    		FROM pay_menu_2 
+    		FROM menu_2 
     		WHERE id in (${menu2Id}) AND status = 1 
     		ORDER BY sort ASC
     	]]>
@@ -89,7 +89,7 @@
     <select id="queryFirstMenuByUserDao" parameterType="java.lang.String" resultType="menuDTO">
     	<![CDATA[
     		SELECT id, name 
-    		FROM pay_menu_1 
+    		FROM menu_1 
     		WHERE id in (${menu1Id}) AND status = 1 
     		ORDER BY sort ASC
     	]]>
@@ -97,7 +97,7 @@
     
     <insert id="saveFirstMenuDao" parameterType="cn.oper.dto.MenuVO">
     	<![CDATA[
-    		INSERT INTO pay_menu_1(
+    		INSERT INTO menu_1(
     			`name`,
     			`sort`,
     			`status`,
@@ -113,7 +113,7 @@
     
     <insert id="saveSencondMenuDao" parameterType="cn.oper.dto.MenuVO">
     	<![CDATA[
-    		INSERT INTO pay_menu_2(
+    		INSERT INTO menu_2(
     			`name`,
     			`parentId`,
     			`sort`,
@@ -133,7 +133,7 @@
     
     <insert id="saveThreeMenuDao" parameterType="cn.oper.dto.MenuVO">
     	<![CDATA[
-    		INSERT INTO pay_menu_3(
+    		INSERT INTO menu_3(
     			`name`,
     			`parentId`,
     			`status`,
@@ -150,7 +150,7 @@
     
     <update id="updateFirstMenuDao" parameterType="cn.oper.dto.MenuVO">
     	<![CDATA[
-    		UPDATE pay_menu_1 
+    		UPDATE menu_1 
     		SET `name` = #{name},
     			`sort` = #{sort}
     		WHERE id = #{id}
@@ -159,7 +159,7 @@
     
     <update id="updateSencondMenuDao" parameterType="cn.oper.dto.MenuVO">
     	<![CDATA[
-    		UPDATE pay_menu_2 
+    		UPDATE menu_2 
     		SET `name` = #{name},
     			`parentId` = #{parentId},
     			`sort` = #{sort},
@@ -171,7 +171,7 @@
     
     <update id="updateThreeMenuDao" parameterType="cn.oper.dto.MenuVO">
     	<![CDATA[
-    		UPDATE pay_menu_3 
+    		UPDATE menu_3 
     		SET `name` = #{name},
     			`parentId` = #{parentId},
     			`url` = #{url}
@@ -182,16 +182,16 @@
     <update id="updateMenuStatusDao">
     	<choose>
     		<when test="level == 1 or level == '1' ">
-    			UPDATE pay_menu_1 SET `status` = 2 WHERE id = #{id} 
+    			UPDATE menu_1 SET `status` = 2 WHERE id = #{id} 
     		</when>
     		<when test="level == 2 or level == '2' ">
-    			UPDATE pay_menu_2 SET `status` = 2 WHERE id = #{id} 
+    			UPDATE menu_2 SET `status` = 2 WHERE id = #{id} 
     		</when>
     		<when test="level == 3 or level == '3' ">
-    			UPDATE pay_menu_3 SET `status` = 2 WHERE id = #{id} 
+    			UPDATE menu_3 SET `status` = 2 WHERE id = #{id} 
     		</when>
     		<otherwise>
-    			UPDATE pay_menu_1 SET id = #{id} WHERE id = #{id}
+    			UPDATE menu_1 SET id = #{id} WHERE id = #{id}
     		</otherwise>		
     	</choose>
     </update>   

@@ -9,7 +9,7 @@
     	]]>
     	<include refid="table_column_list"/>
     	<![CDATA[
-    		FROM pay_role AS k 
+    		FROM role AS k 
     	]]>
     </select>
     
@@ -19,7 +19,7 @@
 		]]>
 		<include refid="table_column_list"/>
 		<![CDATA[
-			FROM pay_role AS k 
+			FROM role AS k 
 			WHERE 1 = 1
 		]]>
 		<include refid="filter_sql"/>
@@ -32,7 +32,7 @@
     	]]>
     	<include refid="table_column_list"/>
     	<![CDATA[
-    		FROM pay_role AS k 
+    		FROM role AS k 
     		WHERE k.id = #{entityPK}
     	]]>
     </select>
@@ -40,14 +40,14 @@
     <select id="getRolePermissionDao" parameterType="java.lang.Long" resultType="java.util.Map">
 		<![CDATA[
 			SELECT GROUP_CONCAT(permission_id) as permissionIds 
-    		FROM pay_role_permission 
+    		FROM role_permission 
     		WHERE role_id = #{roleId} 
 		]]>    
     </select>
     
     <insert id="save" parameterType="role">
     	<![CDATA[
-    		INSERT INTO pay_role(
+    		INSERT INTO role(
     			`name`,
     			`type`,
     			`description`
@@ -61,7 +61,7 @@
     
     <insert id="addRolePermissionDao">
     	<![CDATA[
-    		INSERT INTO pay_role_permission (
+    		INSERT INTO role_permission (
     			`role_id`,
     			`permission_id`
     		) VALUES (
@@ -73,7 +73,7 @@
     
     <update id="update" parameterType="role">
     	<![CDATA[
-    		UPDATE pay_role 
+    		UPDATE role 
     		SET `name` = #{name},
     			`type` = #{type},
     			`description` = #{description}
@@ -83,14 +83,14 @@
     
     <delete id="delete" parameterType="java.lang.Integer">
     	<![CDATA[
-    		DELETE FROM pay_role 
+    		DELETE FROM role 
     		WHERE id = #{entityPK}
     	]]>
     </delete>
     
     <delete id="deleteRolePermissionDao" parameterType="java.lang.Long">
     	<![CDATA[
-    		DELETE FROM pay_role_permission 
+    		DELETE FROM role_permission 
     		WHERE role_id = #{roleId}
     	]]>
     </delete>
