@@ -1,9 +1,9 @@
 package cn.oper.service;
 
-import cn.oper.page.Page;
-import cn.oper.page.dto.SearchDTO;
+import cn.oper.common.page.Page;
+import cn.oper.common.page.dto.SearchDTO;
+import cn.oper.dto.RoleVO;
 import cn.oper.pojo.Role;
-import cn.oper.vo.RoleVO;
 
 public interface RoleService extends BaseService<Role, Integer>{
 

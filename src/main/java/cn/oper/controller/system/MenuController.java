@@ -11,12 +11,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import res.utils.MessagesKeyUtils;
 import cn.oper.common.utils.ParamUtils;
 import cn.oper.controller.BaseController;
 import cn.oper.dto.MenuDTO;
+import cn.oper.dto.MenuVO;
 import cn.oper.service.MenuService;
-import cn.oper.vo.MenuVO;
+import cn.oper.util.MessagesKeyUtils;
 
 /**
  * 

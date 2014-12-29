@@ -5,17 +5,17 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import cn.oper.common.page.Page;
+import cn.oper.common.page.PageResolver;
+import cn.oper.common.page.dto.SearchDTO;
 import cn.oper.common.utils.ParamUtils;
 import cn.oper.common.validator.Assert;
 import cn.oper.controller.system.InitComponent;
 import cn.oper.dao.BaseDao;
 import cn.oper.dao.admin.RoleDao;
-import cn.oper.page.Page;
-import cn.oper.page.PageResolver;
-import cn.oper.page.dto.SearchDTO;
+import cn.oper.dto.RoleVO;
 import cn.oper.pojo.Role;
 import cn.oper.service.RoleService;
-import cn.oper.vo.RoleVO;
 
 @Service(RoleService.SERVICE_NAME)
 public class RoleServiceImpl extends AbstractBaseService<Role, Integer> implements RoleService {

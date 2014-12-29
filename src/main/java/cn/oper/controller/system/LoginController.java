@@ -11,17 +11,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import cn.oper.common.framework.exception.ServiceRuntimeException;
 import cn.oper.common.utils.ConstantsUtils;
 import cn.oper.common.validator.Validation;
 import cn.oper.controller.BaseController;
 import cn.oper.dto.MenuDTO;
-import cn.oper.enums.ExceptionEnums;
-import cn.oper.framework.exception.ServiceRuntimeException;
 import cn.oper.pojo.MemberUser;
 import cn.oper.pojo.Role;
 import cn.oper.service.MenuService;
 import cn.oper.service.RoleService;
 import cn.oper.service.UserService;
+import cn.oper.util.Constants;
 
 @Controller("system.loginContoller")
 @RequestMapping(value="/")
@@ -83,16 +83,16 @@ public class LoginController extends BaseController{
 	public ModelAndView loginVerify(String username, String password, String loginType, Model model){
 		
 		if(!(Validation.isNotNULL(username, password))){
-			throw new ServiceRuntimeException(ExceptionEnums.BADREQ_LOGIN_NAME_AND_PASSWORD_NOTNULL);
+			throw new ServiceRuntimeException(Constants.BADREQ_LOGIN_NAME_AND_PASSWORD_NOTNULL);
 		}
 		
 		MemberUser user = this.userService.getMemberUserByNameService(username);
 		
 		if(null == user){
-			throw new ServiceRuntimeException(ExceptionEnums.BADREQ_LOGIN_USER_INEXISTENCE);
+			throw new ServiceRuntimeException(Constants.BADREQ_LOGIN_USER_INEXISTENCE);
 		}
 		if(!(user.compare(password))){
-			throw new ServiceRuntimeException(ExceptionEnums.BADREQ_LOGIN_PASSWORD_ERROR);
+			throw new ServiceRuntimeException(Constants.BADREQ_LOGIN_PASSWORD_ERROR);
 		}
 		
 		this.initUserPermission(user);
@@ -103,7 +103,7 @@ public class LoginController extends BaseController{
 			return ajaxDoneSuccess(null);
 		}
 		
-		throw new ServiceRuntimeException(ExceptionEnums.BADREQ_DIALOG_LOGIN_SUCCESS);
+		throw new ServiceRuntimeException(Constants.BADREQ_DIALOG_LOGIN_SUCCESS);
 	}
 	
 	/**
@@ -113,7 +113,7 @@ public class LoginController extends BaseController{
 		
 		Role role = this.roleService.getEntityById(Integer.valueOf(user.getRoleId().toString()));
 		if(role == null){
-			throw new ServiceRuntimeException(ExceptionEnums.BADREQ_USER_LOGIN_FAIL);
+			throw new ServiceRuntimeException(Constants.BADREQ_USER_LOGIN_FAIL);
 		}
 		user.setRoleType(role.getType());
 		

@@ -3,8 +3,8 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
 
+import cn.oper.common.page.dto.SearchDTO;
 import cn.oper.dao.BaseDao;
-import cn.oper.page.dto.SearchDTO;
 import cn.oper.pojo.Annunciate;
 public interface AnnunciateDao extends BaseDao<Annunciate, Integer> {
 	

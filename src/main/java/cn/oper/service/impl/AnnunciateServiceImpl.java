@@ -4,16 +4,16 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import cn.oper.common.page.Page;
+import cn.oper.common.page.PageResolver;
+import cn.oper.common.page.dto.SearchDTO;
 import cn.oper.common.utils.ConstantsUtils;
 import cn.oper.common.validator.Assert;
 import cn.oper.dao.BaseDao;
 import cn.oper.dao.admin.AnnunciateDao;
-import cn.oper.page.Page;
-import cn.oper.page.PageResolver;
-import cn.oper.page.dto.SearchDTO;
+import cn.oper.dto.AnnunciateVO;
 import cn.oper.pojo.Annunciate;
 import cn.oper.service.AnnunciateService;
-import cn.oper.vo.AnnunciateVO;
 @Service(AnnunciateService.SERVICE_NAME)
 public class AnnunciateServiceImpl extends AbstractBaseService<Annunciate, Integer> implements AnnunciateService {
 	

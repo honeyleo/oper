@@ -6,7 +6,7 @@ import java.util.Map;
 import org.apache.ibatis.annotations.Param;
 
 import cn.oper.dto.MenuDTO;
-import cn.oper.vo.MenuVO;
+import cn.oper.dto.MenuVO;
 
 public interface MenuDao {
 

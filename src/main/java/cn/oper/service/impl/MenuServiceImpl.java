@@ -11,8 +11,8 @@ import org.springframework.stereotype.Service;
 import cn.oper.common.validator.Assert;
 import cn.oper.dao.admin.MenuDao;
 import cn.oper.dto.MenuDTO;
+import cn.oper.dto.MenuVO;
 import cn.oper.service.MenuService;
-import cn.oper.vo.MenuVO;
 
 @Service(MenuService.SERVICE_NAME)
 public class MenuServiceImpl implements MenuService{

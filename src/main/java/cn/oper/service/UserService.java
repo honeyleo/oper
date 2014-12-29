@@ -1,7 +1,7 @@
 package cn.oper.service;
 
-import cn.oper.page.Page;
-import cn.oper.page.dto.SearchDTO;
+import cn.oper.common.page.Page;
+import cn.oper.common.page.dto.SearchDTO;
 import cn.oper.pojo.MemberUser;
 
 public interface UserService extends BaseService<MemberUser, Integer>{

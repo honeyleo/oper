@@ -5,8 +5,8 @@ import java.util.Map;
 
 import org.apache.ibatis.annotations.Param;
 
+import cn.oper.common.page.dto.SearchDTO;
 import cn.oper.dao.BaseDao;
-import cn.oper.page.dto.SearchDTO;
 import cn.oper.pojo.MemberUser;
 
 public interface UserDao extends BaseDao<MemberUser, Integer>{

@@ -11,16 +11,16 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import res.utils.MessagesKeyUtils;
+import cn.oper.common.page.Page;
+import cn.oper.common.page.dto.SearchDTO;
 import cn.oper.common.utils.ParamUtils;
 import cn.oper.common.validator.Assert;
 import cn.oper.controller.BaseController;
-import cn.oper.page.Page;
-import cn.oper.page.dto.SearchDTO;
+import cn.oper.dto.RoleVO;
 import cn.oper.pojo.Role;
 import cn.oper.service.MenuService;
 import cn.oper.service.RoleService;
-import cn.oper.vo.RoleVO;
+import cn.oper.util.MessagesKeyUtils;
 
 /**
  * 

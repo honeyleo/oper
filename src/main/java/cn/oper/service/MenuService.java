@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import cn.oper.dto.MenuDTO;
-import cn.oper.vo.MenuVO;
+import cn.oper.dto.MenuVO;
 
 public interface MenuService {
 
