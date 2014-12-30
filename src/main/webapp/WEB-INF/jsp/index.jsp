@@ -26,10 +26,6 @@
 <script src="<c:url value='/styles/dwz/js/dwz.min.js'/>" type="text/javascript"></script>
 <script src="<c:url value='/styles/dwz/js/dwz.regional.zh.js'/>" type="text/javascript"></script>
 
-<script src="<c:url value='/js/My97DatePicker/WdatePicker.js'/>" type="text/javascript"></script>
-<script type="text/javascript" src="/js/highcharts/highcharts.js"></script>
-<script type="text/javascript" src="/js/highcharts/exporting.js"></script> 
-
 <script type="text/javascript">
 $(function(){
 	DWZ.init("<c:url value='/styles/dwz/dwz.frag.xml'/>", {

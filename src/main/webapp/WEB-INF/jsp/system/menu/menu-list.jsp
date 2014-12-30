@@ -5,6 +5,7 @@
 	//遍历被选中CheckBox元素的集合 得到Value值    	
 	function customFunction() {
 		var json = arguments[0], result = "",allResult="";
+		if(json == undefined) return;
 		$(json.allItems).each(function(i){
 			if(this.name == 'name3'){
 				allResult += ',' + this.value;
