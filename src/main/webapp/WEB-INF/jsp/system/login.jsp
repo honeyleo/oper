@@ -87,6 +87,15 @@
 			}
 		});
 	}
+function KeyDown()
+{
+    if (event.keyCode == 13)
+    {
+        event.returnValue=false;
+        event.cancel = true;
+        $("#loginButton").click();
+    }
+}
 </script>
 </head>
 
@@ -117,7 +126,7 @@
 					</p>
 					<p>
 						<label>密码：</label>
-						<input type="password" name="password" size="20" class="login_input"  />
+						<input type="password" name="password" size="20" class="login_input"  onkeydown="KeyDown()"/>
 					</p>
 					<div class="login_bar">
 						<input id="loginButton" name="loginButton" class="sub" type="button" value=" " />
